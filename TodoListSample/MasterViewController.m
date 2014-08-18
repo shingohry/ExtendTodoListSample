@@ -7,10 +7,10 @@
 //
 
 #import "MasterViewController.h"
+#import "AddItemViewController.h"
 
-#import "DetailViewController.h"
-
-@interface MasterViewController () {
+@interface MasterViewController () <AddItemViewControllerDelegate>
+{
     NSMutableArray *_objects;
 }
 @end
@@ -25,27 +25,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)addItemViewControllerDidCancel:(AddItemViewController *)controller
 {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)addItemViewControllerDidFinish:(AddItemViewController *)controller upperItem:(NSString *)upperItem lowerItem:(NSString *)lowerItem
+{
+    NSLog(@"addItemViewControllerDidFinish 項目1:%@",upperItem);
+    NSLog(@"addItemViewControllerDidFinish 項目2:%@",lowerItem);
+    
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    
+    // 入力画面で入力された文字列２つを
+    // NSDictionaryに格納
+    NSDictionary *itemDictionary = @{
+                                 @"upperItem": upperItem,
+                                 @"lowerItem": lowerItem,
+                                 };
+    
+    // NSDictionaryを_objects配列に格納
+    [_objects insertObject:itemDictionary atIndex:0];
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Table View
@@ -64,49 +78,25 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    // _objects配列に格納しておいたNSDictionaryを取り出す
+    NSDictionary *itemDictionary = _objects[indexPath.row];
+    
+    // NSDictionaryに格納しておいた文字列を取り出す
+    NSString *upperItem = itemDictionary[@"upperItem"];
+    NSString *lowerItem = itemDictionary[@"lowerItem"];
+    
+    // 取り出した文字列をラベルにセットする
+    cell.textLabel.text = upperItem;
+    cell.detailTextLabel.text = lowerItem;
+    
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+    if ([[segue identifier] isEqualToString:@"ShowAddItemView"]) {
+        AddItemViewController *addItemViewController = (AddItemViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
+        addItemViewController.delegate = self;
     }
 }
 

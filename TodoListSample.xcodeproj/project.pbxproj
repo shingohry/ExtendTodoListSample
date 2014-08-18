@@ -15,13 +15,13 @@
 		C90FA6C019A207B5009C8B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FA6BF19A207B5009C8B1F /* AppDelegate.m */; };
 		C90FA6C319A207B5009C8B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90FA6C119A207B5009C8B1F /* Main.storyboard */; };
 		C90FA6C619A207B5009C8B1F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FA6C519A207B5009C8B1F /* MasterViewController.m */; };
-		C90FA6C919A207B5009C8B1F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FA6C819A207B5009C8B1F /* DetailViewController.m */; };
 		C90FA6CB19A207B5009C8B1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90FA6CA19A207B5009C8B1F /* Images.xcassets */; };
 		C90FA6D219A207B5009C8B1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90FA6D119A207B5009C8B1F /* XCTest.framework */; };
 		C90FA6D319A207B5009C8B1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90FA6AF19A207B5009C8B1F /* Foundation.framework */; };
 		C90FA6D419A207B5009C8B1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90FA6B319A207B5009C8B1F /* UIKit.framework */; };
 		C90FA6DC19A207B5009C8B1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C90FA6DA19A207B5009C8B1F /* InfoPlist.strings */; };
 		C90FA6DE19A207B5009C8B1F /* TodoListSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FA6DD19A207B5009C8B1F /* TodoListSampleTests.m */; };
+		C90FA6E919A209C2009C8B1F /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FA6E819A209C2009C8B1F /* AddItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +48,14 @@
 		C90FA6C219A207B5009C8B1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C90FA6C419A207B5009C8B1F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		C90FA6C519A207B5009C8B1F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		C90FA6C719A207B5009C8B1F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		C90FA6C819A207B5009C8B1F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		C90FA6CA19A207B5009C8B1F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C90FA6D019A207B5009C8B1F /* TodoListSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90FA6D119A207B5009C8B1F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C90FA6D919A207B5009C8B1F /* TodoListSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TodoListSampleTests-Info.plist"; sourceTree = "<group>"; };
 		C90FA6DB19A207B5009C8B1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C90FA6DD19A207B5009C8B1F /* TodoListSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoListSampleTests.m; sourceTree = "<group>"; };
+		C90FA6E719A209C2009C8B1F /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		C90FA6E819A209C2009C8B1F /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +120,8 @@
 				C90FA6C119A207B5009C8B1F /* Main.storyboard */,
 				C90FA6C419A207B5009C8B1F /* MasterViewController.h */,
 				C90FA6C519A207B5009C8B1F /* MasterViewController.m */,
-				C90FA6C719A207B5009C8B1F /* DetailViewController.h */,
-				C90FA6C819A207B5009C8B1F /* DetailViewController.m */,
+				C90FA6E719A209C2009C8B1F /* AddItemViewController.h */,
+				C90FA6E819A209C2009C8B1F /* AddItemViewController.m */,
 				C90FA6CA19A207B5009C8B1F /* Images.xcassets */,
 				C90FA6B619A207B5009C8B1F /* Supporting Files */,
 			);
@@ -257,7 +257,7 @@
 				C90FA6C019A207B5009C8B1F /* AppDelegate.m in Sources */,
 				C90FA6C619A207B5009C8B1F /* MasterViewController.m in Sources */,
 				C90FA6BC19A207B5009C8B1F /* main.m in Sources */,
-				C90FA6C919A207B5009C8B1F /* DetailViewController.m in Sources */,
+				C90FA6E919A209C2009C8B1F /* AddItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +385,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoListSample/TodoListSample-Prefix.pch";
 				INFOPLIST_FILE = "TodoListSample/TodoListSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -398,6 +399,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoListSample/TodoListSample-Prefix.pch";
 				INFOPLIST_FILE = "TodoListSample/TodoListSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
